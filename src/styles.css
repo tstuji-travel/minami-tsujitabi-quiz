@@ -1,0 +1,414 @@
+:root {
+  color-scheme: light;
+  font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #17324f;
+  background:
+    radial-gradient(circle at top left, rgba(71, 155, 255, 0.3), transparent 30%),
+    linear-gradient(180deg, #f9fcff 0%, #eef6ff 52%, #f3f8ea 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.hero,
+.card,
+.course-card,
+.mini-card {
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 40px rgba(44, 84, 128, 0.12);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  background:
+    linear-gradient(135deg, rgba(32, 95, 168, 0.97), rgba(72, 169, 147, 0.94)),
+    #1f5fa8;
+  color: #fff;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.hero h1,
+.card h2,
+.card h3,
+.course-card h3 {
+  margin: 0;
+}
+
+.hero-copy {
+  margin: 10px 0 0;
+  max-width: 42ch;
+}
+
+.hero-rank {
+  min-width: 180px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hero-rank strong {
+  display: block;
+  font-size: 1.4rem;
+  margin-top: 6px;
+}
+
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.top-nav button,
+.primary-button,
+.secondary-button,
+.ghost-button,
+.danger-button,
+.choice-button {
+  border: none;
+  border-radius: 16px;
+  padding: 14px 18px;
+  min-height: 52px;
+  cursor: pointer;
+}
+
+.top-nav button,
+.secondary-button,
+.ghost-button {
+  background: #dfeafa;
+  color: #113b61;
+}
+
+.primary-button {
+  background: #1f5fa8;
+  color: #fff;
+}
+
+.danger-button {
+  background: #b84343;
+  color: #fff;
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.course-grid,
+.course-growth {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.course-card {
+  padding: 20px;
+  border: 2px solid color-mix(in srgb, var(--accent) 35%, white);
+}
+
+.course-description {
+  margin: 8px 0 0;
+  color: #264563;
+}
+
+.course-pill,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.course-pill {
+  background: color-mix(in srgb, var(--accent) 16%, white);
+  color: #113b61;
+  margin-bottom: 12px;
+}
+
+.course-stats {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.course-stats div {
+  display: grid;
+  gap: 2px;
+}
+
+.course-stats dt,
+.course-stats dd {
+  margin: 0;
+}
+
+.course-stats dt {
+  font-weight: 700;
+}
+
+.course-stats dd {
+  font-size: 1.05rem;
+}
+
+.course-card-footer {
+  margin-top: 16px;
+}
+
+.check-list,
+.result-list,
+.choice-list,
+.badge-list {
+  display: grid;
+  gap: 12px;
+}
+
+.check-item,
+.result-item,
+.answer-panel,
+.history-answer,
+.mini-card,
+.update-banner {
+  padding: 14px;
+  border-radius: 18px;
+  background: #f5f9ff;
+}
+
+.check-item {
+  display: grid;
+  gap: 6px;
+}
+
+.status-chip {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.status-done {
+  background: #e9f7ef;
+  color: #1d7a48;
+}
+
+.status-pending {
+  background: #fff1da;
+  color: #9a6115;
+}
+
+.progress-track {
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #dde9f8;
+}
+
+.progress-wrap {
+  margin-top: 10px;
+}
+
+.progress-label {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #44617f;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1f5fa8, #41c48b);
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.score-box {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #edf4ff;
+}
+
+.question-text {
+  margin-top: 18px;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.choice-button {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: #fff;
+  border: 2px solid #d8e5f4;
+  padding: 14px 18px;
+}
+
+.choice-button span {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #edf4ff;
+}
+
+.choice-correct {
+  border-color: #2a9b5b;
+  background: #eefaf2;
+}
+
+.choice-incorrect {
+  border-color: #ca5c5c;
+  background: #fff0f0;
+}
+
+.choice-button em {
+  min-width: 7em;
+  text-align: right;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.rankup-box {
+  padding: 18px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff2bf, #ffe59a);
+  margin: 14px 0;
+}
+
+.badge {
+  background: #ffe9a8;
+  color: #594100;
+  margin-right: 8px;
+}
+
+.detail-card {
+  display: grid;
+  gap: 14px;
+}
+
+.detail-grid,
+.result-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mini-card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.mini-card p {
+  margin: 0;
+}
+
+.result-item {
+  display: grid;
+  gap: 6px;
+}
+
+.result-item p,
+.result-item strong,
+.check-item strong,
+.check-item small {
+  margin: 0;
+}
+
+.answer-good {
+  color: #1d7a48;
+  font-weight: 700;
+}
+
+.answer-bad {
+  color: #b84343;
+  font-weight: 700;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .course-grid,
+  .course-growth,
+  .detail-grid,
+  .result-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .quiz-header {
+    flex-direction: column;
+  }
+
+  .choice-button {
+    grid-template-columns: 32px 1fr;
+  }
+
+  .choice-button em {
+    grid-column: 2;
+    text-align: left;
+  }
+}

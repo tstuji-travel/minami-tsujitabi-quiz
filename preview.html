@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>美南のツジ旅クイズ UI Preview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        color: #17324f;
+        background:
+          radial-gradient(circle at top left, rgba(71, 155, 255, 0.3), transparent 30%),
+          linear-gradient(180deg, #f9fcff 0%, #eef6ff 52%, #f3f8ea 100%);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 24px;
+        min-height: 100vh;
+      }
+      .app-shell {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .hero, .card, .course-card, .mini-card {
+        border-radius: 24px;
+        background: rgba(255,255,255,0.92);
+        box-shadow: 0 20px 40px rgba(44,84,128,0.12);
+      }
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, rgba(32,95,168,0.97), rgba(72,169,147,0.94));
+        color: #fff;
+      }
+      .eyebrow { margin: 0 0 6px; font-size: .9rem; letter-spacing: .08em; }
+      .hero h1, .card h2, .card h3, .course-card h3 { margin: 0; }
+      .hero-copy { margin: 10px 0 0; max-width: 42ch; }
+      .hero-rank {
+        min-width: 180px;
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.16);
+      }
+      .hero-rank strong { display: block; font-size: 1.4rem; margin-top: 6px; }
+      .top-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .top-nav button, .primary-button, .secondary-button {
+        border: none;
+        border-radius: 16px;
+        padding: 14px 18px;
+        min-height: 52px;
+        font: inherit;
+      }
+      .top-nav button, .secondary-button { background: #dfeafa; color: #113b61; }
+      .primary-button { background: #1f5fa8; color: #fff; }
+      .stack { display: grid; gap: 16px; }
+      .card, .course-card { padding: 20px; }
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .course-card { border: 2px solid color-mix(in srgb, var(--accent) 35%, white); }
+      .course-pill, .badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: .9rem;
+      }
+      .course-pill {
+        background: color-mix(in srgb, var(--accent) 16%, white);
+        color: #113b61;
+        margin-bottom: 12px;
+      }
+      .course-stats, .check-list, .choice-list, .badge-list, .result-list {
+        display: grid;
+        gap: 12px;
+      }
+      .check-item, .result-item, .answer-panel {
+        padding: 14px;
+        border-radius: 18px;
+        background: #f5f9ff;
+      }
+      .progress-track {
+        height: 12px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: #dde9f8;
+        margin-top: 8px;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 60%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #1f5fa8, #41c48b);
+      }
+      .quiz-preview {
+        display: grid;
+        grid-template-columns: 1.15fr .85fr;
+        gap: 16px;
+      }
+      .choice-button {
+        display: grid;
+        grid-template-columns: 32px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px 18px;
+        border-radius: 16px;
+        border: 2px solid #d8e5f4;
+        background: #fff;
+      }
+      .choice-button span {
+        display: inline-grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #edf4ff;
+      }
+      .choice-correct {
+        border-color: #2a9b5b;
+        background: #eefaf2;
+      }
+      .choice-incorrect {
+        border-color: #ca5c5c;
+        background: #fff0f0;
+      }
+      .badge {
+        background: #ffe9a8;
+        color: #594100;
+        margin-right: 8px;
+      }
+      .result-item p, .check-item p, .course-card p, .card p { margin: 0; }
+      .result-item, .check-item { display: grid; gap: 6px; }
+      @media (max-width: 900px) {
+        .hero, .course-grid, .quiz-preview { grid-template-columns: 1fr; display: grid; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">美南の旅人ランク</p>
+          <h1>美南のツジ旅クイズ</h1>
+          <p class="hero-copy">旅の相棒として、次の旅の準備を進めよう。iPad で遊びやすい大きめ UI を意識したデザインです。</p>
+        </div>
+        <div class="hero-rank">
+          <span>現在</span>
+          <strong>旅の相棒</strong>
+        </div>
+      </header>
+
+      <nav class="top-nav">
+        <button>トップ</button>
+        <button>回答履歴</button>
+        <button>成長記録</button>
+        <button>設定</button>
+      </nav>
+
+      <main class="stack">
+        <section class="card">
+          <h2>次のランクへの進捗</h2>
+          <p>次の「旅の研究員」まで</p>
+          <div class="check-list">
+            <div class="check-item"><strong>旅の記憶 70点以上</strong><p>達成</p></div>
+            <div class="check-item"><strong>旅の判断力 70点以上</strong><p>未達</p></div>
+            <div class="check-item"><strong>クアラルンプール予習 70点以上</strong><p>達成</p></div>
+            <div class="check-item"><strong>累計30問回答</strong><p>20 / 30</p></div>
+          </div>
+        </section>
+
+        <section class="course-grid">
+          <article class="course-card" style="--accent:#2f7ed8">
+            <div class="course-pill">旅のアルバム</div>
+            <h3>旅の記憶</h3>
+            <p>父娘旅のアルバムをめくるように、楽しい思い出をたどるコース。</p>
+            <div class="course-stats">
+              <div><strong>問題数</strong><p>30問</p></div>
+              <div><strong>自己ベスト</strong><p>80点</p></div>
+              <div><strong>最高正解率</strong><p>80%</p></div>
+              <div><strong>挑戦回数</strong><p>3回</p></div>
+            </div>
+            <p style="margin-top:14px"><button class="primary-button">挑戦する</button></p>
+          </article>
+
+          <article class="course-card" style="--accent:#f1a63b">
+            <div class="course-pill">コンパス</div>
+            <h3>旅の判断力</h3>
+            <p>次の旅で役立つ判断や工夫を学べる、作戦会議コース。</p>
+            <div class="course-stats">
+              <div><strong>問題数</strong><p>30問</p></div>
+              <div><strong>自己ベスト</strong><p>まだ挑戦していません</p></div>
+              <div><strong>最高正解率</strong><p>-</p></div>
+              <div><strong>挑戦回数</strong><p>0回</p></div>
+            </div>
+            <p style="margin-top:14px"><button class="primary-button">挑戦する</button></p>
+          </article>
+
+          <article class="course-card" style="--accent:#3da46b">
+            <div class="course-pill">ツインタワー</div>
+            <h3>クアラルンプール予習</h3>
+            <p>文化や食事、交通や安全を学んで、出発前の準備を整えるコース。</p>
+            <div class="course-stats">
+              <div><strong>問題数</strong><p>30問</p></div>
+              <div><strong>自己ベスト</strong><p>90点</p></div>
+              <div><strong>最高正解率</strong><p>90%</p></div>
+              <div><strong>挑戦回数</strong><p>2回</p></div>
+            </div>
+            <p style="margin-top:14px"><button class="primary-button">挑戦する</button></p>
+          </article>
+        </section>
+
+        <section class="quiz-preview">
+          <article class="card">
+            <p class="eyebrow">クイズ画面イメージ</p>
+            <h2>3 / 10</h2>
+            <div class="progress-track"><div class="progress-fill"></div></div>
+            <p style="margin-top:16px; font-size:1.2rem; font-weight:700;">ピンクガネーシャへ向かう車内で、次女が読んでいた本は？</p>
+            <div class="choice-list" style="margin-top:16px">
+              <div class="choice-button choice-incorrect"><span>A</span><strong>フリーレン</strong><em>あなたの回答</em></div>
+              <div class="choice-button"><span>B</span><strong>かいけつゾロリ</strong><em></em></div>
+              <div class="choice-button choice-correct"><span>C</span><strong>麦本三歩</strong><em>正解</em></div>
+              <div class="choice-button"><span>D</span><strong>地球の歩き方</strong><em></em></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="eyebrow">結果画面イメージ</p>
+            <h2>80 / 100 点</h2>
+            <p>正解率 80% / 8問正解</p>
+            <div class="answer-panel" style="margin-top:14px">
+              <strong>ランクアップ！</strong>
+              <p>見習い旅人 → 旅の相棒</p>
+            </div>
+            <div class="badge-list" style="margin-top:14px">
+              <span class="badge">自己ベスト更新賞</span>
+              <span class="badge">旅の記憶名人</span>
+              <span class="badge">連続正解賞</span>
+            </div>
+            <div class="result-list" style="margin-top:14px">
+              <div class="result-item">
+                <strong>回答詳細</strong>
+                <p>美南の回答: A / 正解: C</p>
+                <p>旅の移動中に何度も読んでいた本がポイントです。</p>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f5fa8"/>
+      <stop offset="100%" stop-color="#3da46b"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#g)"/>
+  <circle cx="156" cy="172" r="54" fill="#fff4c3"/>
+  <path d="M112 332c58-96 138-144 250-152-44 58-85 118-124 180-44-14-86-23-126-28z" fill="#fff"/>
+  <path d="M256 118l26 52 58 8-42 40 10 57-52-27-52 27 10-57-42-40 58-8z" fill="#ffe08a"/>
+  <text x="256" y="430" text-anchor="middle" font-size="52" font-family="sans-serif" fill="#ffffff">旅QUIZ</text>
+</svg>

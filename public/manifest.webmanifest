@@ -1,0 +1,17 @@
+{
+  "name": "美南のツジ旅クイズ",
+  "short_name": "ツジ旅クイズ",
+  "description": "オフラインで遊べる、美南向けのツジ旅クイズ",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f9ff",
+  "theme_color": "#1f5fa8",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
