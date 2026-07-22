@@ -232,7 +232,11 @@ export default function App() {
             <p className="course-description">{COURSE_META[screen.level].description}</p>
             <div className="detail-grid">
               <div className="mini-card">
-                <strong>問題数</strong>
+                <strong>1回の出題数</strong>
+                <p>{QUESTIONS_PER_PLAY}問</p>
+              </div>
+              <div className="mini-card">
+                <strong>コース総数</strong>
                 <p>{groupedCounts[screen.level]}問</p>
               </div>
               <div className="mini-card">

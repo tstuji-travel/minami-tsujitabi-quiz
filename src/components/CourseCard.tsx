@@ -18,7 +18,11 @@ export function CourseCard({ level, questionCount, stats, onOpen }: CourseCardPr
       <p className="course-description">{course.description}</p>
       <dl className="course-stats">
         <div>
-          <dt>問題数</dt>
+          <dt>1回の出題数</dt>
+          <dd>7問</dd>
+        </div>
+        <div>
+          <dt>コース総数</dt>
           <dd>{questionCount}問</dd>
         </div>
         <div>
