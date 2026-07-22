@@ -5,7 +5,7 @@ import { APP_NAME, COURSE_META } from "./data/courses";
 import { loadQuestions } from "./lib/data";
 import { determineAwards } from "./lib/awards";
 import { determineRank, getNextRank, getNextRankProgress, getRankById, updateStatsWithHistory } from "./lib/progression";
-import { createQuizSession, gradeAnswer, presentChoices, calculateResultSummary } from "./lib/quiz";
+import { QUESTIONS_PER_PLAY, createQuizSession, gradeAnswer, presentChoices, calculateResultSummary } from "./lib/quiz";
 import { clearAllData, loadHistory, loadSettings, loadStats, saveHistory, saveSettings, saveStats } from "./lib/storage";
 import type { CourseLevel, PresentedChoice, QuizAnswerRecord, QuizHistory, QuizQuestion, QuizSession, StoredStats } from "./types";
 
@@ -261,11 +261,11 @@ export default function App() {
             <div className="quiz-header">
               <div>
                 <p className="eyebrow">{screen.session.courseName}</p>
-                <h2>{quizIndex + 1} / 10</h2>
+                <h2>{quizIndex + 1} / {QUESTIONS_PER_PLAY}</h2>
               </div>
               <div className="score-box">現在の得点 {currentScore}点</div>
             </div>
-            <ProgressBar value={quizIndex + (selectedChoice ? 1 : 0)} max={10} label="進捗" />
+            <ProgressBar value={quizIndex + (selectedChoice ? 1 : 0)} max={QUESTIONS_PER_PLAY} label="進捗" />
             <p className="question-text">{currentQuestion.question}</p>
             <div className="choice-list">
               {presentedChoices.map((choice) => {

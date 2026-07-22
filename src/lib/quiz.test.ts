@@ -2,15 +2,15 @@ import { describe, expect, test } from "vitest";
 import { sampleQuestions } from "../data/sampleQuestions";
 import { determineAwards } from "./awards";
 import { createDefaultStats, determineRank, updateStatsWithHistory } from "./progression";
-import { calculateResultSummary, createQuizSession, gradeAnswer, presentChoices } from "./quiz";
+import { QUESTIONS_PER_PLAY, calculateResultSummary, createQuizSession, gradeAnswer, presentChoices } from "./quiz";
 import { limitHistory } from "./storage";
 import type { QuizHistory } from "../types";
 
 describe("quiz helpers", () => {
-  test("10問が重複なく選ばれる", () => {
+  test("7問が重複なく選ばれる", () => {
     const session = createQuizSession(sampleQuestions, 1, () => 0.25);
-    expect(session.questions).toHaveLength(10);
-    expect(new Set(session.questions.map((question) => question.id)).size).toBe(10);
+    expect(session.questions).toHaveLength(QUESTIONS_PER_PLAY);
+    expect(new Set(session.questions.map((question) => question.id)).size).toBe(QUESTIONS_PER_PLAY);
   });
 
   test("選択肢を並べ替えても正解判定が崩れない", () => {
@@ -51,14 +51,14 @@ describe("quiz helpers", () => {
       playedAt: "2026-07-22T00:00:00.000Z",
       courseLevel: 1,
       courseName: "旅の記憶",
-      score: 100,
-      maxScore: 100,
-      correctCount: 10,
-      totalQuestions: 10,
+      score: 70,
+      maxScore: 70,
+      correctCount: 7,
+      totalQuestions: 7,
       correctRate: 100,
       rankAfterPlay: "旅のたまご",
       awards: [],
-      answers: sampleQuestions.slice(0, 10).map((question) => gradeAnswer(question, question.correctAnswer)),
+      answers: sampleQuestions.slice(0, 7).map((question) => gradeAnswer(question, question.correctAnswer)),
     };
     const result = determineAwards(previous, history);
     expect(result.earnedThisPlay).toContain("初挑戦賞");
@@ -76,11 +76,11 @@ describe("quiz helpers", () => {
       score: 80,
       maxScore: 100,
       correctCount: 8,
-      totalQuestions: 10,
+      totalQuestions: 7,
       correctRate: 80,
       rankAfterPlay: "見習い旅人",
       awards: [],
-      answers: sampleQuestions.slice(30, 40).map((question) => gradeAnswer(question, question.correctAnswer)),
+      answers: sampleQuestions.slice(30, 37).map((question) => gradeAnswer(question, question.correctAnswer)),
     };
     const next = updateStatsWithHistory(previous, history);
     expect(next.courseStats[2].bestScore).toBe(80);

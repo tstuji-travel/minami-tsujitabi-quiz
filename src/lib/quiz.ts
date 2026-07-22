@@ -9,6 +9,8 @@ import type {
   QuizSession,
 } from "../types";
 
+export const QUESTIONS_PER_PLAY = 7;
+
 export const shuffle = <T,>(items: T[], random = Math.random): T[] => {
   const cloned = [...items];
   for (let index = cloned.length - 1; index > 0; index -= 1) {
@@ -29,7 +31,7 @@ export const createQuizSession = (
   random = Math.random,
 ): QuizSession => {
   const courseQuestions = getCourseQuestions(questions, level);
-  const selected = shuffle(courseQuestions, random).slice(0, 10);
+  const selected = shuffle(courseQuestions, random).slice(0, QUESTIONS_PER_PLAY);
   return {
     courseLevel: level,
     courseName: COURSE_META[level].name,
